@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+}
+
+body .ui-menubar {
+  border: none;
+  background-color: #525252;
+  border-radius: 0;
+  color: white;
+}
+
+body .ui-menubar a {
+  color: white;
+}
+body .ui-menubar a:hover,
+body .ui-menubar a:active,
+body .ui-menubar a:link {
+  color: white;
+}
+
+body .ui-menubar .fa {
+  font-size: 35px;
+  padding: 10px;
+}
