@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/components/common/menuitem';
 
 @Component({
-  selector: 'rkg-topbar',
+  selector: 'rsg-topbar',
   templateUrl: './topbar.component.html'
 })
 export class TopbarComponent {

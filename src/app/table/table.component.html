@@ -1,0 +1,48 @@
+<p-table [value]="skills">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Skills</th>
+      <th>Percentage</th>
+      <th><p-button label="Calculate" (onClick)="calulate()"></p-button></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData>
+    <tr>
+      <td pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input
+              pInputText
+              type="text"
+              [(ngModel)]="rowData.skillName"
+              required
+            />
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{ rowData.skillName }}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input
+              pInputText
+              type="number"
+              [(ngModel)]="rowData.percentage"
+              required
+            />
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{ rowData.percentage }}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td>
+        <div>
+          {{ rowData.result }}
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

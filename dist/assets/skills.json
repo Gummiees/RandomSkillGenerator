@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "skillName": "STR",
+      "percentage": 50,
+      "result": null
+    },
+    {
+      "skillName": "DEX",
+      "percentage": 40,
+      "result": null
+    },
+    {
+      "skillName": "ACC",
+      "percentage": 60,
+      "result": null
+    },
+    {
+      "skillName": "SPD",
+      "percentage": 70,
+      "result": null
+    },
+    {
+      "skillName": "INT",
+      "percentage": 30,
+      "result": null
+    },
+    {
+      "skillName": "FAITH",
+      "percentage": 40,
+      "result": null
+    },
+    {
+      "skillName": "DEF",
+      "percentage": 40,
+      "result": null
+    },
+    {
+      "skillName": "RES",
+      "percentage": 30,
+      "result": null
+    },
+    {
+      "skillName": "LUCK",
+      "percentage": 50,
+      "result": null
+    },
+    {
+      "skillName": "CHARM",
+      "percentage": 60,
+      "result": null
+    }
+  ]
+}
