@@ -3,7 +3,7 @@ import { Skill } from './table.model';
 import { SkillService } from './skill.service';
 
 @Component({
-  selector: 'rsg-table',
+  selector: 'rc-table',
   templateUrl: './table.component.html'
 })
 export class TableComponent implements OnInit {

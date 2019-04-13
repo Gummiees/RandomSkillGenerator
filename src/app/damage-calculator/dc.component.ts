@@ -8,7 +8,7 @@ import {
 import { MessageService, ConfirmationService } from 'primeng/api';
 
 @Component({
-  selector: 'rsg-damage-calculator',
+  selector: 'rc-damage-calculator',
   templateUrl: './dc.component.html'
 })
 export class DamageCalculatorComponent implements OnInit {
