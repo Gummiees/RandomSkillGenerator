@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist",
+    "public": "dist/random-skill-generator",
     "ignore": [
       "firebase.json",
       "**/.*",

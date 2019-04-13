@@ -1,0 +1,106 @@
+<p-toast></p-toast>
+<p-confirmDialog
+  header="Reset form"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>
+<div class="forms-container">
+  <form (ngSubmit)="calculateFirst()" [formGroup]="firstForm">
+    <div class="first-form-container">
+      <div class="first-form-attacker">
+        <img src="assets/images/atacker.png" height="200px" />
+        <div class="first-form">
+          <h2>Attacker</h2>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <i class="ra ra-perspective-dice-four"></i>
+            </span>
+            <input
+              type="number"
+              pInputText
+              placeholder="Dice"
+              formControlName="attackerDice"
+            />
+          </div>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <i class="fa fa-bullseye"></i>
+            </span>
+            <input
+              type="number"
+              pInputText
+              placeholder="Accuracity"
+              formControlName="accuracity"
+            />
+          </div>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"
+              ><i class="ra ra-clover"></i
+            ></span>
+            <input
+              type="number"
+              pInputText
+              placeholder="Luck"
+              formControlName="attackerLuck"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="button-container">
+        <p-button
+          type="submit"
+          [disabled]="firstForm.invalid"
+          label="Calculate"
+        ></p-button>
+        <p-button
+          type="button"
+          label="Reset"
+          styleClass="ui-button-warning"
+          [disabled]="firstForm.untouched || firstForm.pristine"
+          (onClick)="reset()"
+        ></p-button>
+      </div>
+      <div class="first-form-defender">
+        <img src="assets/images/defender.png" height="200px" />
+        <div class="first-form">
+          <h2>Defender</h2>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <i class="ra ra-perspective-dice-four"></i>
+            </span>
+            <input
+              type="number"
+              pInputText
+              placeholder="Dice"
+              formControlName="defenderDice"
+            />
+          </div>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <i class="ra ra-player-dodge"></i>
+            </span>
+            <input
+              type="number"
+              pInputText
+              placeholder="Velocity"
+              formControlName="velocity"
+            />
+          </div>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <i class="ra ra-clover"></i>
+            </span>
+            <input
+              type="number"
+              pInputText
+              placeholder="Luck"
+              formControlName="defenderLuck"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <p-messages *ngFor="let msg of msgs" [(value)]="msg"></p-messages>
+  <div class="second-form-container"></div>
+</div>

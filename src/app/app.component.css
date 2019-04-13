@@ -25,12 +25,89 @@ body .ui-menubar .fa {
   padding: 10px;
 }
 
+body .ui-messages {
+  padding: 5px;
+  margin: 0;
+}
+
+.app-container {
+  padding: 50px;
+}
+
 /* TABLE */
 
 .table-container {
-  padding: 50px;
+  margin-top: 20px;
 }
 
 .table-container td > div {
   min-height: 15px;
+}
+
+/* DAMAGE CALCULATOR */
+
+.damage-calculator-container {
+  margin-top: 20px;
+}
+
+/* REFERENCES */
+
+.references-container {
+  font-size: 10px;
+}
+
+.forms-container,
+.first-form-container,
+.second-form-container,
+.first-form-attacker,
+.first-form-defender,
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.forms-container,
+.button-container {
+  flex-direction: column;
+}
+
+.first-form-attacker,
+.first-form-defender {
+  justify-content: flex-start;
+}
+
+.first-form-attacker > img,
+.first-form-defender > img {
+  margin-right: 10px;
+}
+
+.first-form-container,
+.second-form-container {
+  justify-content: space-around;
+  width: 100%;
+}
+
+.first-form-container {
+  margin-bottom: 20px;
+}
+
+.forms-container form {
+  width: 100%;
+}
+
+.forms-container .ui-inputgroup .ui-inputgroup-addon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4c4c4c;
+}
+
+.forms-container p-messages {
+  width: 100%;
+}
+
+.forms-container .ui-inputgroup,
+.forms-container p-messages,
+.button-container > p-button {
+  margin-bottom: 5px;
 }
