@@ -57,10 +57,9 @@ body .ui-messages {
 }
 
 .forms-container,
-.first-form-container,
-.second-form-container,
-.first-form-attacker,
-.first-form-defender,
+.form-container,
+.form-attacker,
+.form-defender,
 .button-container {
   display: flex;
   align-items: center;
@@ -71,23 +70,22 @@ body .ui-messages {
   flex-direction: column;
 }
 
-.first-form-attacker,
-.first-form-defender {
+.form-attacker,
+.form-defender {
   justify-content: flex-start;
 }
 
-.first-form-attacker > img,
-.first-form-defender > img {
+.form-attacker > img,
+.form-defender > img {
   margin-right: 10px;
 }
 
-.first-form-container,
-.second-form-container {
+.form-container {
   justify-content: space-around;
   width: 100%;
 }
 
-.first-form-container {
+.form-container {
   margin-bottom: 20px;
 }
 
@@ -110,4 +108,15 @@ body .ui-messages {
 .forms-container p-messages,
 .button-container > p-button {
   margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .form-container {
+    flex-direction: column;
+  }
+
+  .form-attacker > img,
+  .form-defender > img {
+    display: none;
+  }
 }

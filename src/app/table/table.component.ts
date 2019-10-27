@@ -25,9 +25,9 @@ export class TableComponent implements OnInit {
         '| random number: ',
         rdm,
         '| result: ',
-        (skill.result = rdm > skill.percentage / 100 ? 1 : 0)
+        (skill.result = rdm <= skill.percentage / 100 ? 1 : 0)
       );
-      skill.result = rdm > skill.percentage / 100 ? 1 : 0;
+      skill.result = rdm <= skill.percentage / 100 ? 1 : 0;
     });
   }
 }

@@ -5,8 +5,8 @@
 ></p-confirmDialog>
 <div class="forms-container">
   <form (ngSubmit)="calculateFirst()" [formGroup]="firstForm">
-    <div class="first-form-container">
-      <div class="first-form-attacker">
+    <div class="form-container">
+      <div class="form-attacker">
         <img src="assets/images/atacker.png" height="200px" />
         <div class="first-form">
           <h2>Attacker</h2>
@@ -19,6 +19,7 @@
               pInputText
               placeholder="Dice"
               formControlName="attackerDice"
+              pTooltip="Dice"
             />
           </div>
           <div class="ui-inputgroup">
@@ -30,17 +31,19 @@
               pInputText
               placeholder="Accuracity"
               formControlName="accuracity"
+              pTooltip="Accuracity"
             />
           </div>
           <div class="ui-inputgroup">
-            <span class="ui-inputgroup-addon"
-              ><i class="ra ra-clover"></i
-            ></span>
+            <span class="ui-inputgroup-addon">
+              <i class="ra ra-clover"></i>
+            </span>
             <input
               type="number"
               pInputText
               placeholder="Luck"
               formControlName="attackerLuck"
+              pTooltip="Luck"
             />
           </div>
         </div>
@@ -59,7 +62,7 @@
           (onClick)="reset()"
         ></p-button>
       </div>
-      <div class="first-form-defender">
+      <div class="form-defender">
         <img src="assets/images/defender.png" height="200px" />
         <div class="first-form">
           <h2>Defender</h2>
@@ -72,6 +75,7 @@
               pInputText
               placeholder="Dice"
               formControlName="defenderDice"
+              pTooltip="Dice"
             />
           </div>
           <div class="ui-inputgroup">
@@ -83,6 +87,7 @@
               pInputText
               placeholder="Velocity"
               formControlName="velocity"
+              pTooltip="Velocity"
             />
           </div>
           <div class="ui-inputgroup">
@@ -94,6 +99,7 @@
               pInputText
               placeholder="Luck"
               formControlName="defenderLuck"
+              pTooltip="Luck"
             />
           </div>
         </div>
@@ -101,6 +107,78 @@
     </div>
   </form>
 
-  <p-messages *ngFor="let msg of msgs" [(value)]="msg"></p-messages>
-  <div class="second-form-container"></div>
+  <p-messages *ngFor="let msg of msgsFirst" [(value)]="msg"></p-messages>
+  <form (ngSubmit)="calculateSecond()" [formGroup]="secondForm">
+    <div class="form-container" *ngIf="isHit">
+      <div class="form-attacker">
+        <img src="assets/images/atacker-2.png" height="225px" />
+        <div class="second-form">
+          <h2>Attacker</h2>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <i class="ra ra-perspective-dice-four"></i>
+            </span>
+            <input
+              type="number"
+              pInputText
+              placeholder="Dice"
+              formControlName="attackerDice"
+              pTooltip="Dice"
+            />
+          </div>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <i class="ra ra-muscle-fat"></i>
+            </span>
+            <input
+              type="number"
+              pInputText
+              placeholder="Damage"
+              formControlName="damage"
+              pTooltip="Damage"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="button-container">
+        <h1>Second stage</h1>
+        <p-button
+          type="submit"
+          [disabled]="secondForm.invalid"
+          label="Calculate"
+        ></p-button>
+      </div>
+      <div class="form-defender">
+        <img src="assets/images/defender-2.png" height="225px" />
+        <div class="second-form">
+          <h2>Defender</h2>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <i class="ra ra-perspective-dice-four"></i>
+            </span>
+            <input
+              type="number"
+              pInputText
+              placeholder="Dice"
+              formControlName="defenderDice"
+              pTooltip="Dice"
+            />
+          </div>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <i class="fa fa-shield"></i>
+            </span>
+            <input
+              type="number"
+              pInputText
+              placeholder="Defense"
+              formControlName="defense"
+              pTooltip="Defense"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <p-messages *ngFor="let msg of msgsSecond" [(value)]="msg"></p-messages>
 </div>

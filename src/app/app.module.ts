@@ -9,7 +9,8 @@ import {
   InputTextModule,
   ButtonModule,
   MessageService,
-  ConfirmationService
+  ConfirmationService,
+  TooltipModule
 } from 'primeng/primeng';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
@@ -43,7 +44,8 @@ import { DamageCalculatorComponent } from './damage-calculator/dc.component';
     ToastModule,
     MessagesModule,
     MessageModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    TooltipModule
   ],
   providers: [SkillService, MessageService, ConfirmationService],
   bootstrap: [AppComponent]
