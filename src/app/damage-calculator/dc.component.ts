@@ -26,6 +26,7 @@ export class DamageCalculatorComponent implements OnInit {
 
   success1Url: string;
   defeat1Url: string;
+  criticUrl: string;
   success2Url: string;
   defeat2Url: string;
 
@@ -252,6 +253,7 @@ export class DamageCalculatorComponent implements OnInit {
   private initImages() {
     this.animateUrl("assets/images/1_success", "success1Url");
     this.animateUrl("assets/images/2_success", "success2Url");
+    this.animateUrl("assets/images/1_critic", "criticUrl");
     this.animateUrl("assets/images/1_defeat", "defeat1Url");
     this.animateUrl2("assets/images/2_defeat", "defeat2Url");
   }

@@ -110,7 +110,7 @@
   <div class="result-container" *ngIf="msgsFirst && msgsFirst.length > 0">
     <div *ngIf="isHit" class="result-photo">
       <img [src]="success1Url" height="225px" />
-      <img *ngIf="isCritic" src="assets/images/1_critic.jpg" height="225px" />
+      <img *ngIf="isCritic" [src]="criticUrl" height="225px" />
     </div>
     <div class="result-text-container">
       <p-messages *ngFor="let msg of msgsFirst" [(value)]="msg"></p-messages>
