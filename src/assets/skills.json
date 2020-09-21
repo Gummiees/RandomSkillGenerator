@@ -1,6 +1,21 @@
 {
   "data": [
     {
+      "skillName": "HP",
+      "percentage": 60,
+      "result": null
+    },
+    {
+      "skillName": "NAY",
+      "percentage": 60,
+      "result": null
+    },
+    {
+      "skillName": "SAN",
+      "percentage": 60,
+      "result": null
+    },
+    {
       "skillName": "STR",
       "percentage": 50,
       "result": null

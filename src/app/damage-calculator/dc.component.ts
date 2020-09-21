@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import {
   FormGroup,
   FormBuilder,
   FormControl,
-  Validators
-} from '@angular/forms';
-import { MessageService, ConfirmationService } from 'primeng/api';
+  Validators,
+} from "@angular/forms";
+import { MessageService, ConfirmationService } from "primeng/api";
 
 @Component({
-  selector: 'rc-damage-calculator',
-  templateUrl: './dc.component.html'
+  selector: "rc-damage-calculator",
+  templateUrl: "./dc.component.html",
 })
 export class DamageCalculatorComponent implements OnInit {
   firstForm: FormGroup;
@@ -20,7 +20,14 @@ export class DamageCalculatorComponent implements OnInit {
   isHit: boolean = false;
   private isCritic: boolean = false;
 
+  isBlocked: boolean = false;
+
   private critic: number = 90;
+
+  success1Url: string;
+  defeat1Url: string;
+  success2Url: string;
+  defeat2Url: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,13 +36,14 @@ export class DamageCalculatorComponent implements OnInit {
   ) {
     this.constructFirstForm();
     this.constructSecondForm();
+    this.initImages();
   }
 
   ngOnInit() {}
 
   reset() {
     this.confirmationService.confirm({
-      message: 'Are you sure that you want to reset the form?',
+      message: "Are you sure that you want to reset the form?",
       accept: () => {
         this.isHit = false;
         this.isCritic = false;
@@ -55,7 +63,7 @@ export class DamageCalculatorComponent implements OnInit {
 
         this.msgsFirst = [];
         this.msgsSecond = [];
-      }
+      },
     });
   }
 
@@ -75,35 +83,35 @@ export class DamageCalculatorComponent implements OnInit {
 
       if (totalAttacker > totalDefender) {
         this.msgsFirst.push([
-          { severity: 'success', summary: 'Attacker hits defender' }
+          { severity: "success", summary: "Attacker hits defender" },
         ]);
         this.isHit = true;
       } else if (totalAttacker < totalDefender) {
         this.msgsFirst.push([
-          { severity: 'error', summary: 'Attacker fails to hit defender' }
+          { severity: "error", summary: "Attacker fails to hit defender" },
         ]);
       } else {
         this.msgsFirst.push([
           {
-            severity: 'warn',
-            summary: 'Attack is equal to defense, going random!'
-          }
+            severity: "warn",
+            summary: "Attack is equal to defense, going random!",
+          },
         ]);
         const rdm: number = Math.random();
         if (rdm >= 0.5) {
           this.msgsFirst.push([
             {
-              severity: 'success',
-              summary: `Random was ${rdm}, therefore Attacker hits defender`
-            }
+              severity: "success",
+              summary: `Random was ${rdm}, therefore Attacker hits defender`,
+            },
           ]);
           this.isHit = true;
         } else {
           this.msgsFirst.push([
             {
-              severity: 'error',
-              summary: `Random was ${rdm}, therefore Attacker fails to hit defender`
-            }
+              severity: "error",
+              summary: `Random was ${rdm}, therefore Attacker fails to hit defender`,
+            },
           ]);
         }
       }
@@ -112,19 +120,19 @@ export class DamageCalculatorComponent implements OnInit {
         this.isCritic = this.calculateCritic();
         if (this.isCritic) {
           this.msgsFirst.push([
-            { severity: 'success', summary: 'Critical hit!' }
+            { severity: "success", summary: "Critical hit!" },
           ]);
         } else {
           this.msgsFirst.push([
-            { severity: 'warn', summary: 'No critical hit' }
+            { severity: "warn", summary: "No critical hit" },
           ]);
         }
       }
     } else {
       this.messageService.add({
-        severity: 'warn',
+        severity: "warn",
         summary: null,
-        detail: 'Form is not valid.'
+        detail: "Form is not valid.",
       });
     }
   }
@@ -139,12 +147,12 @@ export class DamageCalculatorComponent implements OnInit {
       if (this.isCritic) {
         this.msgsSecond.push([
           {
-            severity: 'warn',
+            severity: "warn",
             summary: `Critical damage added! Before critical damage: ${totalAttacker}, after critical damage: ${(
               (totalAttacker * 4) /
               3
-            ).toFixed(0)}`
-          }
+            ).toFixed(0)}`,
+          },
         ]);
         totalAttacker = Number(((totalAttacker * 4) / 3).toFixed(0));
       }
@@ -156,28 +164,30 @@ export class DamageCalculatorComponent implements OnInit {
       const totalDamage: number = totalAttacker - totalDefender;
 
       if (totalDamage > 0) {
+        this.isBlocked = false;
         this.msgsSecond.push([
-          { severity: 'success', summary: `Hits with ${totalDamage}!` }
+          { severity: "success", summary: `Hits with ${totalDamage}!` },
         ]);
       } else {
+        this.isBlocked = true;
         this.msgsSecond.push([
           {
-            severity: 'error',
-            summary: `The defender successfully blocks the attack! (0 damage)`
-          }
+            severity: "error",
+            summary: `The defender successfully blocks the attack! (0 damage)`,
+          },
         ]);
       }
     } else if (!this.isHit) {
       this.messageService.add({
-        severity: 'warn',
+        severity: "warn",
         summary: null,
-        detail: 'It was not a hit...'
+        detail: "It was not a hit...",
       });
     } else {
       this.messageService.add({
-        severity: 'warn',
+        severity: "warn",
         summary: null,
-        detail: 'Form is not valid.'
+        detail: "Form is not valid.",
       });
     }
   }
@@ -190,10 +200,11 @@ export class DamageCalculatorComponent implements OnInit {
     if (totalLuck >= 0) {
       this.msgsFirst.push([
         {
-          severity: 'info',
-          summary: `Total luck is ${totalLuck}, therefore critic is at ${this
-            .critic - totalLuck}`
-        }
+          severity: "info",
+          summary: `Total luck is ${totalLuck}, therefore critic is at ${
+            this.critic - totalLuck
+          }`,
+        },
       ]);
       return diceAttacker >= this.critic - totalLuck;
     }
@@ -204,19 +215,22 @@ export class DamageCalculatorComponent implements OnInit {
     this.firstForm = this.formBuilder.group({
       attackerDice: new FormControl(0, [
         Validators.required,
-        Validators.min(0)
+        Validators.min(0),
       ]),
       accuracity: new FormControl(0, [Validators.required, Validators.min(0)]),
       attackerLuck: new FormControl(0, [
         Validators.required,
-        Validators.min(0)
+        Validators.min(0),
       ]),
       defenderDice: new FormControl(0, [
         Validators.required,
-        Validators.min(0)
+        Validators.min(0),
       ]),
       velocity: new FormControl(0, [Validators.required, Validators.min(0)]),
-      defenderLuck: new FormControl(0, [Validators.required, Validators.min(0)])
+      defenderLuck: new FormControl(0, [
+        Validators.required,
+        Validators.min(0),
+      ]),
     });
   }
 
@@ -224,14 +238,45 @@ export class DamageCalculatorComponent implements OnInit {
     this.secondForm = this.formBuilder.group({
       attackerDice: new FormControl(0, [
         Validators.required,
-        Validators.min(0)
+        Validators.min(0),
       ]),
       damage: new FormControl(0, [Validators.required, Validators.min(0)]),
       defenderDice: new FormControl(0, [
         Validators.required,
-        Validators.min(0)
+        Validators.min(0),
       ]),
-      defense: new FormControl(0, [Validators.required, Validators.min(0)])
+      defense: new FormControl(0, [Validators.required, Validators.min(0)]),
     });
+  }
+
+  private initImages() {
+    this.animateUrl("assets/images/1_success", "success1Url");
+    this.animateUrl("assets/images/2_success", "success2Url");
+    this.animateUrl("assets/images/1_defeat", "defeat1Url");
+    this.animateUrl2("assets/images/2_defeat", "defeat2Url");
+  }
+
+  private animateUrl(startUrl: string, varName: string) {
+    setInterval(() => {
+      this[varName] = startUrl + "_1.jpg";
+      setTimeout(() => {
+        this[varName] = startUrl + "_2.jpg";
+      }, 500);
+    }, 1000);
+  }
+
+  private animateUrl2(startUrl: string, varName: string) {
+    setInterval(() => {
+      this[varName] = startUrl + "_1.jpg";
+      setTimeout(() => {
+        this[varName] = startUrl + "_2.jpg";
+      }, 500);
+      setTimeout(() => {
+        this[varName] = startUrl + "_3.jpg";
+      }, 1000);
+      setTimeout(() => {
+        this[varName] = startUrl + "_4.jpg";
+      }, 1500);
+    }, 2000);
   }
 }

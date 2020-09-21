@@ -7,7 +7,7 @@
   <form (ngSubmit)="calculateFirst()" [formGroup]="firstForm">
     <div class="form-container">
       <div class="form-attacker">
-        <img src="assets/images/atacker.png" height="200px" />
+        <img src="assets/images/1_attack.jpg" height="200px" />
         <div class="first-form">
           <h2>Attacker</h2>
           <div class="ui-inputgroup">
@@ -63,7 +63,7 @@
         ></p-button>
       </div>
       <div class="form-defender">
-        <img src="assets/images/defender.png" height="200px" />
+        <img src="assets/images/1_defend.jpg" height="200px" />
         <div class="first-form">
           <h2>Defender</h2>
           <div class="ui-inputgroup">
@@ -107,11 +107,23 @@
     </div>
   </form>
 
-  <p-messages *ngFor="let msg of msgsFirst" [(value)]="msg"></p-messages>
+  <div class="result-container" *ngIf="msgsFirst && msgsFirst.length > 0">
+    <div *ngIf="isHit" class="result-photo">
+      <img [src]="success1Url" height="225px" />
+      <img *ngIf="isCritic" src="assets/images/1_critic.jpg" height="225px" />
+    </div>
+    <div class="result-text-container">
+      <p-messages *ngFor="let msg of msgsFirst" [(value)]="msg"></p-messages>
+    </div>
+    <div *ngIf="!isHit" class="result-photo">
+      <img [src]="defeat1Url" height="225px" />
+    </div>
+  </div>
+
   <form (ngSubmit)="calculateSecond()" [formGroup]="secondForm">
     <div class="form-container" *ngIf="isHit">
       <div class="form-attacker">
-        <img src="assets/images/atacker-2.png" height="225px" />
+        <img src="assets/images/2_attack.jpg" height="225px" />
         <div class="second-form">
           <h2>Attacker</h2>
           <div class="ui-inputgroup">
@@ -149,7 +161,7 @@
         ></p-button>
       </div>
       <div class="form-defender">
-        <img src="assets/images/defender-2.png" height="225px" />
+        <img src="assets/images/2_defend.jpg" height="225px" />
         <div class="second-form">
           <h2>Defender</h2>
           <div class="ui-inputgroup">
@@ -180,5 +192,16 @@
       </div>
     </div>
   </form>
-  <p-messages *ngFor="let msg of msgsSecond" [(value)]="msg"></p-messages>
+
+  <div class="result-container" *ngIf="msgsSecond && msgsSecond.length > 0">
+    <div *ngIf="!isBlocked" class="result-photo">
+      <img [src]="success2Url" height="225px" />
+    </div>
+    <div class="result-text-container">
+      <p-messages *ngFor="let msg of msgsSecond" [(value)]="msg"></p-messages>
+    </div>
+    <div *ngIf="isBlocked" class="result-photo">
+      <img [src]="defeat2Url" height="225px" />
+    </div>
+  </div>
 </div>

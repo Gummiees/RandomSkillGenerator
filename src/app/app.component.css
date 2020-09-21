@@ -60,7 +60,8 @@ body .ui-messages {
 .form-container,
 .form-attacker,
 .form-defender,
-.button-container {
+.button-container,
+.result-container {
   display: flex;
   align-items: center;
 }
@@ -85,8 +86,21 @@ body .ui-messages {
   width: 100%;
 }
 
+.result-container {
+  justify-content: center;
+  width: 100%;
+}
+
 .form-container {
   margin-bottom: 20px;
+}
+
+.result-text-container {
+  width: 50%;
+}
+
+.result-photo {
+  width: 15%;
 }
 
 .forms-container form {
