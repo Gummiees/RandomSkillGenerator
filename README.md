@@ -1,6 +1,6 @@
 # RandomSkillGenerator
 
-https://random-skill-generator.000webhostapp.com/
+https://random-skill-generator.firebaseapp.com/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
